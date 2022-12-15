@@ -49,10 +49,14 @@ So I not only had to reverse the direction I was searching into, but also "flip"
 -
 
 # Day 14
--
+This one's a little tricky because it assumes an endless floor in part 2. So you actually have to handle sand the piles up for quite a bit. With my implementation of having a pre-built grid, I had to wind my way around this. I basically added the maximum extent the sand would need to pile up all the way to the top if nothing obstructed it. In that case, the sand would form a right-angled rectangle of which we know one edge and an angle. The edge is pretty obviously the maximum height in our input. The angle is 45°. That's because the sand would distribute evenly left to right, forming a 90° angle. I only needed half of that, as I wanted to know how far the sand can stretch _in each direction_, so my angle was 45°. I could then add this much width to my grid and shift each coordinate used in the input by that amount as well.
+Actually, I am not totally sure I got it right and I could just have added an arbitrary but sufficiently large extra space to my grid, but that did the trick for me.
 
 # Day 15
--
+Another puzzle that is practically immune to brute force. I started with a naive solution, then my memory exploded. So I went back to the whiteboard.
+For the first part, I project the signals from all sensors to the desired y-value.
+For the second part I stole the general idea [from Reddit](https://www.reddit.com/r/adventofcode/comments/zmcn64/comment/j0czott/?utm_source=reddit&utm_medium=web2x&context=3). I don't have to check _all_ coordinates, just the ones that are one unit outside of each sensor's range. We are basically looking at a polygon (the merge diamonds the signals form) with a single hole in it. That single hole has to be one unit outside of some sensor's range, or else it would be within another sensor's range or we wouldn't have any hole in our polygon (which contradicts the task).
+Could probably have come up with some more elegant trigonometry to walk along the circle, but I am already too tired at this point. Good night.
 
 # Day 16
 -
